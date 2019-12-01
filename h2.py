@@ -1,4 +1,6 @@
-import sys
+import sys  # number of args
+
+# To print the results.
 
 
 def print_res(blocks_sizes, process_sizes, selected_blocks):
@@ -10,6 +12,7 @@ def print_res(blocks_sizes, process_sizes, selected_blocks):
         print(str((i+1)), "\t\t", process_sizes[i], "\t\t", selected)
 
 
+# Returns the first block that fits process size.
 def first_fit(blocks_sizes, process_sizes):
     selected_blocks = []
     for process in process_sizes:
@@ -23,6 +26,7 @@ def first_fit(blocks_sizes, process_sizes):
     return selected_blocks
 
 
+# Returns the best block among all blocks that will not cause scattered heap.
 def best_fit(blocks_sizes, process_sizes):
     selected_blocks = []
     for process in process_sizes:
@@ -39,12 +43,14 @@ def best_fit(blocks_sizes, process_sizes):
     return selected_blocks
 
 
+# check number of arguments given in terminal
 if (len(sys.argv) != 2):
     print("invalid number of arguments!")
     exit(2)
 
 file_name = sys.argv[1]
 
+# read file and create obtain required data, check if data is in correct format.
 try:
     file = open(file_name, "r")
 except:
@@ -58,17 +64,13 @@ if (len(arr) != 2):
     print("Invalid format!")
     exit(2)
 
-blocks_sizes = arr[0].split(";")
-process_sizes = arr[1].split(" ")
-
 try:
-    blocks_sizes = [int(block) for block in blocks_sizes]
-    process_sizes = [int(block) for block in process_sizes]
+    blocks_sizes = [int(block) for block in arr[0].split(";")]
+    process_sizes = [int(block) for block in arr[1].split(" ")]
 except:
     print("Invalid format!")
     exit(2)
 
-blocks_sizes_best = blocks_sizes.copy()
 
 first_selected_blocks = first_fit(blocks_sizes.copy(), process_sizes)
 best_selected_blocks = best_fit(blocks_sizes.copy(), process_sizes)
