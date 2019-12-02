@@ -1,0 +1,8 @@
+-Similarities:
+	- In both assignment, data and data2 is aliases. They both refer to some memory part. 
+	Therefore, when we change an element in data, the change affect data2, too. 
+
+-Differences: 
+	-In built-in array slicing, python copies the slices to new memory location and assign it to data2. 
+	-Numpy does not copy the slice to a new memory location, instead it assigns slices starting pointer to data2. 
+	Therefore, changes in data, which data2 covers, will affect data2, too.
