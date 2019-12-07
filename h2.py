@@ -4,7 +4,7 @@ import sys  # number of args
 
 
 def print_res(blocks_sizes, process_sizes, selected_blocks):
-    print("Blocks: ", blocks_sizes, "\nProcesses", process_sizes)
+    print("\n\nBlocks: ", blocks_sizes, "\nProcesses", process_sizes)
     print("\nProcess No.\tProcess Size\tBlock No.")
 
     for i in range(len(process_sizes)):
